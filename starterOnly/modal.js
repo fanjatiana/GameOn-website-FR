@@ -29,3 +29,25 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+
+
+
+// pour repondre au champ non vide : ajout de l'attribut required au formulaire avec une boucle for...of
+
+const infoFirstName = document.getElementById("first");
+const infoLastName = document.getElementById("last");
+const infoEmail = document.getElementById("email");
+const infoBirthdate = document.getElementById("birthdate");
+const infoNumberOfGameonMatch = document.getElementById("quantity");
+
+let infoForm = [infoFirstName,infoLastName, infoEmail , infoBirthdate, infoNumberOfGameonMatch ];
+
+for ( let infoRequiered of infoForm){
+  console.log(infoRequiered.setAttribute("required",""));
+}
+
+
+
+
+
