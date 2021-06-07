@@ -48,7 +48,7 @@ const infoBirthdate = document.getElementById("birthdate");
 const infoNumberOfGameonMatch = document.getElementById("quantity");
 
 let infoForm = [infoFirstName,infoLastName, infoEmail , infoBirthdate, infoNumberOfGameonMatch ];
-
+/*
 for ( let infoRequiered of infoForm){
   console.log(infoRequiered.setAttribute("required",""));
 }
@@ -65,11 +65,24 @@ infoLastName.setAttribute("minlength", "2");
 infoLastName.setAttribute("pattern", "[A-Z -]{2,30}[A-Z]");
 infoLastName.setAttribute("placeholder", "DUPOND-MARTIN");
 
-//pattern email
+//pattern email*/
 
 
 
-
-
+function validateForm()
+{
+  {
+    if(infoFirstName.value == ""){
+      document.getElementById("TextInvalid").innerHTML="Veuillez entrer votre prénom (exemple:Jean-paul)";
+      return false;
+    }else if(infoFirstName.value !== "[A-Z]{1}[a-z -]{2,30}[a-z]"){
+      document.getElementById("TextInvalid").innerHTML = "Votre prénom doit commencer par une majuscule et peut comporter un (-) et non des chiffres ";
+      return false;
+    }else{
+      document.getElementById("TextInvalid").innerHTML = "";
+    }
+  }
+ 
+}
 
 
