@@ -20,10 +20,11 @@ const form = document.getElementsByName("form");
 const submitForm = document.getElementById("submit-form");
 const minlength = document.getElementsByTagName("minlength");
 const gameonMatch = document.getElementById("quantity");
-const locationCity = document.querySelector(".city");
+const locationCity = document.getElementsByName("location");
 const termsOfUse = document.getElementById("checkbox1");
 const maxlength = document.getElementsByTagName("maxlength");
 const cityChecked = document.getElementsByTagName("checked");
+const classNameLocationCity=document.querySelector(".city");
 
 //affichage du formulaire
 // launch modal event
@@ -146,19 +147,29 @@ function validBirthdate(){
 }
 
 function validCheckCity(){
-    //validation villes : ! ne fonctionne pas
-    if(locationCity.validity.typeMismatch){
-      locationCity.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-      return false;
-    }else if(locationCity.checked==false){
-      locationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
-      return false; 
+  for(let i=0; i<locationCity.length;i++){
+     //validation villes : ! ne fonctionne pa
+   if(locationCity[i].checked !== true){
+    classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
+      return true; 
     }else{
-      locationCity.closest(".formData").setAttribute("data-error","");
+      classNameLocationCity.closest(".formData").setAttribute("data-error","");
      
-      return true;
+      return false;
     };
 }
+}
+
+
+/*let caseChecked = function(){
+  for(let i=0; i<locationCity.length;i++){
+    if(locationCity[i].checked){
+      return true;
+    }else{
+      locationCity.closest(".formData").setAttribute("data-error","");
+    }
+  }
+}*/
 
 function validTermsOfUse(){
    //validation condition d'utilisation
