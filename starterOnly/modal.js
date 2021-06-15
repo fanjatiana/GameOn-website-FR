@@ -49,26 +49,23 @@ function closeModal() {
 }
 
 /***********************************************************************fonctions validation du formulaire************************************************************/
-let regexName = /^[a-z ,.'-]+$/i; 
-
+let regexNameAndLastName = /^[A-Za-z ,.'-]+$/i;
+let regexEmail = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+let regexBirthdate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
 
 function validFirstName(){
   
    //validation prénom
    infoFirstName.addEventListener("keyup", function(event){
     event.preventDefault();
-    
-   
     if(infoFirstName.validity.valueMissing){
       infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
-      return false;
-    }else if (regexName.test(infoFirstName.value)==false){
-      infoFirstName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')");
-      return false;
-    }else if (infoFirstName.value.length < 2){
-      infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );
-      return false;
       
+    }else if (!regexNameAndLastName.test(infoFirstName.value)){
+      infoFirstName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')");
+      
+    }else if (infoFirstName.value.length < 2){
+      infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );  
     }
     else{
       infoFirstName.closest(".formData").setAttribute("data-error", "" );
@@ -84,13 +81,13 @@ function validLastName(){
     event.preventDefault();
     if(infoLastName.validity.valueMissing){
       infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-      return false;
-    }else if (regexName.test(infoLastName.value)==false){
+      
+    }else if (!regexNameAndLastName.test(infoLastName.value)){
       infoLastName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')" );
-      return false;
+     
     }else if (infoLastName.value.length < 2){
       infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );
-      return false;
+      
  
     }else{
       infoLastName.closest(".formData").setAttribute("data-error","");
@@ -104,10 +101,12 @@ function validEmail(){
    infoEmail.addEventListener("keyup", function(event){
     if(infoEmail.validity.valueMissing){
       infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-      return false;
+    }else if (!regexEmail.test(infoEmail.value)){
+      infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com" );
+      
     }else if (infoEmail.validity.typeMismatch){
       infoEmail.closest(".formData").setAttribute("data-error", "Veuillez entrer une adresse email valide (par exemple:  monemail@gmail.com)");
-      return false;
+     
     }else{
       infoEmail.closest(".formData").setAttribute("data-error","");
       return true;
@@ -120,10 +119,10 @@ function infoMatchGameon(){
     event.preventDefault();
   if(gameonMatch.validity.typeMismatch){
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-    return false;
-  }else if (gameonMatch.value > 99){
+   
+  }else if (gameonMatch.value > 99 || gameonMatch.value == 0){
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
-    return false;
+    
   }
   else{
     gameonMatch.closest(".formData").setAttribute("data-error","");
@@ -138,38 +137,34 @@ function validBirthdate(){
     event.preventDefault();
   if(infoBirthdate.validity.valueMissing){
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-    return false;
+  }else if (!regexBirthdate.test(infoBirthdate.value)){
+    infoBirthdate.closest(".formData").setAttribute("data-error","Veuillez rentrer une date de naissance valide : JJ/MM/AAAA" );
+    
   }else{
     infoBirthdate.closest(".formData").setAttribute("data-error","");
     return true;
   }
 })
+
 }
 
+
+
 function validCheckCity(){
+  let nbBoxChecked = 0;
   for(let i=0; i<locationCity.length;i++){
+    nbBoxChecked++;
      //validation villes : ! ne fonctionne pa
-   if(locationCity[i].checked !== true){
+   if(locationCity[i].checked < 1){
     classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
-      return true; 
     }else{
       classNameLocationCity.closest(".formData").setAttribute("data-error","");
      
-      return false;
-    };
-}
-}
-
-
-/*let caseChecked = function(){
-  for(let i=0; i<locationCity.length;i++){
-    if(locationCity[i].checked){
       return true;
-    }else{
-      locationCity.closest(".formData").setAttribute("data-error","");
-    }
+    };
   }
-}*/
+}
+
 
 function validTermsOfUse(){
    //validation condition d'utilisation
@@ -177,7 +172,7 @@ function validTermsOfUse(){
     event.preventDefault();
       if(this.checked == false){
         termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
-        return false;
+        
       }else{
         infoBirthdate.closest(".formData").setAttribute("data-error","");
         return true;
@@ -187,14 +182,16 @@ function validTermsOfUse(){
 
 /*******************************************************************************************************************************************************/
 
-let listInputValid =
-validFirstName();
+function validate(){
+  validFirstName();
 validLastName(),
 validEmail();
 validBirthdate();
 infoMatchGameon();
 validCheckCity();
 validTermsOfUse();
+}
+
 
 
 //fonction message d'envoie formulaire
