@@ -286,7 +286,6 @@ function validate(){
     }else{
       return;
     }
-  
   }
 }
 
