@@ -25,6 +25,7 @@ const termsOfUse = document.getElementById("checkbox1");
 const maxlength = document.getElementsByTagName("maxlength");
 const cityChecked = document.getElementsByTagName("checked");
 const classNameLocationCity=document.querySelector(".city");
+const input = document.getElementsByTagName("input");
 
 //affichage du formulaire
 // launch modal event
@@ -265,35 +266,32 @@ function validTermsOfUse(){
 }
 
 /*******************************************************************************************************************************************************/
+
+function validate(event){
+  event.preventDefault();
+  let functionValidForm = [
+  validFirstName(),
+  validLastName(),
+  validEmail(),
+  validBirthdate(),
+  infoMatchGameon(),
+  validCheckCity(),
+  validTermsOfUse()
+  ];
+
+  functionValidForm;
+
+  for(let validForm of functionValidForm){
+    if(validForm == true){
+      alert("formulaire envoyé");
+    }else{
+      return false;
+    }
+  }
+  
+}
+
+
 submitForm.addEventListener("click", validate);
-//const functionInput = 
-
-function validate(){
-  validFirstName();
-validLastName();
-validEmail();
-validBirthdate();
-infoMatchGameon();
-validCheckCity();
-validTermsOfUse();
-
-}
-
-
-
-
-
-
-
-/*fonction message d'envoie formulaire
-function submitTheForm(){
-  submitForm.addEventListener("click", function (){
-    alert("Merci votre formulaire a été envoyé");
-    
-  })
-}
-
-//submitTheForm();*/
-
 
 
