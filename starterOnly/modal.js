@@ -41,10 +41,10 @@ function launchModal() {
 /***********************************************************************fermeture du formulaire************************************************************************/
 
 
-//close modal event
+//on cré un evenement sur le bouton de fermeture de la modale
  btnClose.addEventListener("click", closeModal);
 
-//close modal form 
+//fonction closemodal 
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -223,9 +223,7 @@ function validBirthdate(){
 //fonction validation ville
 function validCheckCity(){
   let nbBoxChecked = 0;
-  for(let i=0; i<locationCity.length;i++){
-   
-     //validation villes : ! ne fonctionne pa
+  for(let i=0; i<locationCity.length;i++){  
    if(locationCity[i].checked == true){
     nbBoxChecked++;
     classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
@@ -267,31 +265,33 @@ function validTermsOfUse(){
 
 /*******************************************************************************************************************************************************/
 
-function validate(event){
-  event.preventDefault();
-  let functionValidForm = [
-  validFirstName(),
-  validLastName(),
-  validEmail(),
-  validBirthdate(),
-  infoMatchGameon(),
-  validCheckCity(),
-  validTermsOfUse()
-  ];
+function validate(){
 
-  functionValidForm;
-
-  for(let validForm of functionValidForm){
-    if(validForm == true){
-      alert("formulaire envoyé");
-    }else{
-      return false;
-    }
-  }
+  let functionValidForm =
+  validFirstName();
+  validLastName();
+  validEmail();
+  validBirthdate();
+  infoMatchGameon();
+  validCheckCity();
+  validTermsOfUse();
   
+  functionValidForm;
+  let confirmation = window.confirm("confirmez-vous ces données et voulez-vous envoyer ce formulaire?");
+  if(functionValidForm == true){
+    confirmation;
+    if(confirmation == true){
+      alert("formulaire envoyé");
+      closeModal();
+    }else{
+      return;
+    }
+  
+  }
 }
 
-
-submitForm.addEventListener("click", validate);
+submitForm.addEventListener("click", validate, function(event){
+  event.preventDefault();
+});
 
 

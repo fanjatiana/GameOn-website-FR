@@ -39,7 +39,7 @@
 				<div class="content">
 					<span class="close"></span>
 					<div class="modal-body">
-						<form name="reserve" id="formGameon" action="index.html" method="get" onsubmit="return validate();">
+						<form name="reserve" id="formGameon" action="index.html" method="post" onsubmit="validate()">
 							<div class="formData">
 								<label for="first">Prénom</label><br>
 								<input class="text-control" type="text" id="first" name="first" minlength = "2" maxlength="30" required><br>
@@ -100,7 +100,7 @@
 								</div>
 								<div>
 									<label for="submit-form"></label>
-									<input class="btn-submit button" id="submit-form" type="submit"  value="C'est parti"  />
+									<input class="btn-submit button" id="submit-form" type="button"  value="C'est parti"  />
 								</div>
 							</div>				
 						</form>
