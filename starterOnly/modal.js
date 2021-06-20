@@ -263,6 +263,7 @@ function validTermsOfUse(){
   })
 }
 
+const message = document.querySelector(".message-sendData");
 /*******************************************************************************************************************************************************/
 
 function validate(){
@@ -278,8 +279,10 @@ function validate(){
  
  
   if((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)){
-      alert("formulaire envoyé");
-      closeModal();
+     message.style.display="block";
+     setTimeout(function(){
+       closeModal(); 
+      }, 3000);;
     }else{
       return false;
     }

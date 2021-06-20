@@ -520,6 +520,25 @@ footer {
   margin: auto;
 }
 
+.message-sendData{
+  display: none;
+  width: 350px;
+  height: 410px;
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+  font-size: 1em;
+  position:fixed;
+  top:50px;
+  left:450px;
+}
+
+.message-sendData p{
+  text-align: center;
+  width: 90%;
+  margin: 150px auto;
+}
+
 
 /*****************KEYFRAMES**************/
 @keyframes modalopen {
