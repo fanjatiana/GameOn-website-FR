@@ -45,14 +45,18 @@ header{
     /*suppression float: left;+ ajout*/
     width: 40%;
     display: flex;
-   
-    
+}
+
+.header-logo img{
+  width: 70%;
 }
 
 /*probleme de lecture des class, remplacement des .topnav par .main-navbar*/
 .main-navbar {
     /*suppression : float: right; + ajout*/
-
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 
@@ -64,7 +68,7 @@ header{
   padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-family: Roboto, sans-serif;
 }
 
@@ -72,6 +76,7 @@ header{
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  
 }
 
 /*mise en place border bottom sur le lien actif*/
@@ -332,6 +337,12 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
+
+
+
+
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -458,7 +469,8 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  white-space: nowrap;
+  /*suppression white-space: nowrap;*/
+  width: 800px;
   margin-top: 20px;
 }
 .hero-text {
@@ -594,5 +606,15 @@ footer {
   }
 }
 
+@media screen and (max-width: 1195px) {
+  .main-navbar a{
+    font-size: 1rem;
+  }
+}
 
-
+@media screen and (max-width:1040px) {
+  .main-navbar a{
+    font-size: 0.8rem;
+  }
+  
+}

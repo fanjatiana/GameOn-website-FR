@@ -267,7 +267,6 @@ function validTermsOfUse(){
 
 function validate(){
 
-  let functionValidForm =
   validFirstName();
   validLastName();
   validEmail();
@@ -276,17 +275,14 @@ function validate(){
   validCheckCity();
   validTermsOfUse();
   
-  functionValidForm;
-  let confirmation = window.confirm("confirmez-vous ces données et voulez-vous envoyer ce formulaire?");
-  if(functionValidForm == true){
-    confirmation;
-    if(confirmation == true){
+ 
+ 
+  if((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)){
       alert("formulaire envoyé");
       closeModal();
     }else{
-      return;
+      return false;
     }
-  }
 }
 
 submitForm.addEventListener("click", validate, function(event){
