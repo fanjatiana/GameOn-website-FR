@@ -194,17 +194,19 @@ function infoMatchGameon(){
 
 //fonction validation date de naissance
 function validBirthdate(){
+  const maxAge = "2008-31-12";
   if(infoBirthdate.validity.valueMissing){
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
   }else if (!regexBirthdate.test(infoBirthdate.value)){
     infoBirthdate.closest(".formData").setAttribute("data-error","Veuillez rentrer une date de naissance valide : JJ/MM/AAAA" );
-    
+  }else if(infoBirthdate.value > maxAge){
+    infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir plus de 13 ans pour participer à ce tournois"); 
   }else{
     infoBirthdate.closest(".formData").setAttribute("data-error","");
     return true;
   }
   //listener event
-   infoBirthdate.addEventListener("blur", function(event){
+   infoBirthdate.addEventListener("keyup", function(event){
     event.preventDefault();
   if(infoBirthdate.validity.valueMissing){
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
