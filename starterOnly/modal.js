@@ -279,11 +279,12 @@ function validate(){
  
  
   if((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)){
-     message.style.display="block";
-     setTimeout(function(){
-       closeModal(); 
-      }, 3000);;
-    }else{
+    message.style.display="block";  
+    setTimeout(function(){
+      message.style.display="none";
+      closeModal();
+      }, 5000);
+      }else{
       return false;
     }
 }
