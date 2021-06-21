@@ -24,8 +24,9 @@ const locationCity = document.getElementsByName("location");
 const termsOfUse = document.getElementById("checkbox1");
 const maxlength = document.getElementsByTagName("maxlength");
 const cityChecked = document.getElementsByTagName("checked");
-const classNameLocationCity=document.querySelector(".city");
+const classNameLocationCity = document.querySelector(".city");
 const input = document.getElementsByTagName("input");
+const message = document.querySelector(".message-sendData");
 
 //affichage du formulaire
 // launch modal event
@@ -41,10 +42,10 @@ function launchModal() {
 /***********************************************************************fermeture du formulaire************************************************************************/
 
 
-//on cré un evenement sur le bouton de fermeture de la modale
- btnClose.addEventListener("click", closeModal);
+//on cré un évènement sur le bouton de fermeture de la modale
+btnClose.addEventListener("click", closeModal);
 
-//fonction closemodal 
+//on définit une fonction pour faire disparaitre le modale : closemodal 
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -56,219 +57,213 @@ let regexBirthdate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01]
 
 
 //fonction validation prénom
-function validFirstName(){
-  if(infoFirstName.validity.valueMissing){
+function validFirstName() {
+  if (infoFirstName.validity.valueMissing) {
     infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
-    
-  }else if (!regexNameAndLastName.test(infoFirstName.value)){
-    infoFirstName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')");
-    
-  }else if (infoFirstName.value.length < 2){
-    infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );  
+
+  } else if (!regexNameAndLastName.test(infoFirstName.value)) {
+    infoFirstName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+
+  } else if (infoFirstName.value.length < 2) {
+    infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
   }
-  else{
-    infoFirstName.closest(".formData").setAttribute("data-error", "" );
+  else {
+    infoFirstName.closest(".formData").setAttribute("data-error", "");
     return true;
-    
+
   }
-   //listener event
-   infoFirstName.addEventListener("keyup", function(event){
+  //listener event
+  infoFirstName.addEventListener("keyup", function (event) {
     event.preventDefault();
-    if(infoFirstName.validity.valueMissing){
+    if (infoFirstName.validity.valueMissing) {
       infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
-      
-    }else if (!regexNameAndLastName.test(infoFirstName.value)){
-      infoFirstName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')");
-      
-    }else if (infoFirstName.value.length < 2){
-      infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );  
+
+    } else if (!regexNameAndLastName.test(infoFirstName.value)) {
+      infoFirstName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+
+    } else if (infoFirstName.value.length < 2) {
+      infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
     }
-    else{
-      infoFirstName.closest(".formData").setAttribute("data-error", "" );
+    else {
+      infoFirstName.closest(".formData").setAttribute("data-error", "");
       return true;
-      
+
     }
-})
+  })
 }
 
 
 //fonction validation nom
-function validLastName(){
-  if(infoLastName.validity.valueMissing){
+function validLastName() {
+  if (infoLastName.validity.valueMissing) {
     infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-    
-  }else if (!regexNameAndLastName.test(infoLastName.value)){
-    infoLastName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')" );
-   
-  }else if (infoLastName.value.length < 2){
-    infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );
-    
 
-  }else{
-    infoLastName.closest(".formData").setAttribute("data-error","");
+  } else if (!regexNameAndLastName.test(infoLastName.value)) {
+    infoLastName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+
+  } else if (infoLastName.value.length < 2) {
+    infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
+
+
+  } else {
+    infoLastName.closest(".formData").setAttribute("data-error", "");
     return true;
   }
   //listener event
-  infoLastName.addEventListener("keyup", function(event){
+  infoLastName.addEventListener("keyup", function (event) {
     event.preventDefault();
-    if(infoLastName.validity.valueMissing){
+    if (infoLastName.validity.valueMissing) {
       infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-      
-    }else if (!regexNameAndLastName.test(infoLastName.value)){
-      infoLastName.closest(".formData").setAttribute("data-error", "pas de nombre, caractères autorisés: (. - ')" );
-     
-    }else if (infoLastName.value.length < 2){
-      infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ " );
-      
- 
-    }else{
-      infoLastName.closest(".formData").setAttribute("data-error","");
+
+    } else if (!regexNameAndLastName.test(infoLastName.value)) {
+      infoLastName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+
+    } else if (infoLastName.value.length < 2) {
+      infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
+
+
+    } else {
+      infoLastName.closest(".formData").setAttribute("data-error", "");
       return true;
     }
-})
+  })
 }
 
 
 //fonction validation email
-function validEmail(){
-  if(infoEmail.validity.valueMissing){
+function validEmail() {
+  if (infoEmail.validity.valueMissing) {
     infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-  }else if (!regexEmail.test(infoEmail.value)){
-    infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com" );
-    
-  }else if (infoEmail.validity.typeMismatch){
-    infoEmail.closest(".formData").setAttribute("data-error", "Veuillez entrer une adresse email valide (par exemple:  monemail@gmail.com)");
-   
-  }else{
-    infoEmail.closest(".formData").setAttribute("data-error","");
+  } else if (!regexEmail.test(infoEmail.value)) {
+    infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com");
+
+  } else {
+    infoEmail.closest(".formData").setAttribute("data-error", "");
     return true;
   }
   //listener event
-   infoEmail.addEventListener("keyup", function(event){
-    if(infoEmail.validity.valueMissing){
+  infoEmail.addEventListener("keyup", function (event) {
+    if (infoEmail.validity.valueMissing) {
       infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-    }else if (!regexEmail.test(infoEmail.value)){
-      infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com" );
-      
-    }else if (infoEmail.validity.typeMismatch){
-      infoEmail.closest(".formData").setAttribute("data-error", "Veuillez entrer une adresse email valide (par exemple:  monemail@gmail.com)");
-     
-    }else{
-      infoEmail.closest(".formData").setAttribute("data-error","");
+    } else if (!regexEmail.test(infoEmail.value)) {
+      infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com");
+
+    } else {
+      infoEmail.closest(".formData").setAttribute("data-error", "");
       return true;
     }
-})
+  })
 }
 
 
 //fonction validation experience gameOn
-function infoMatchGameon(){
-  if(gameonMatch.validity.typeMismatch){
+function infoMatchGameon() {
+  if (gameonMatch.validity.typeMismatch) {
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-   
-  }else if (gameonMatch.value > 99 || gameonMatch.value ==0){
+
+  }else if (gameonMatch.value > 99 || gameonMatch.value == 0) {
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
-    
-  }
-  else{
-    gameonMatch.closest(".formData").setAttribute("data-error","");
+
+  } else {
+    gameonMatch.closest(".formData").setAttribute("data-error", "");
     return true;
   }
   //listener event
-  gameonMatch.addEventListener("keyup", function(event){
+  gameonMatch.addEventListener("keyup", function (event) {
     event.preventDefault();
-  if(gameonMatch.validity.typeMismatch){
-    gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-   
-  }else if (gameonMatch.value > 99 || gameonMatch.value ==0){
-    gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
-    
-  }
-  else{
-    gameonMatch.closest(".formData").setAttribute("data-error","");
-    return true;
-  }
-});
+    if (gameonMatch.validity.typeMismatch) {
+      gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+
+    } else if (gameonMatch.value > 99 || gameonMatch.value == 0) {
+      gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
+
+    } else {
+      gameonMatch.closest(".formData").setAttribute("data-error", "");
+      return true;
+    }
+  });
 }
 
 
 //fonction validation date de naissance
-function validBirthdate(){
+function validBirthdate() {
   const maxAge = "2008-31-12";
-  if(infoBirthdate.validity.valueMissing){
+  if (infoBirthdate.validity.valueMissing) {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-  }else if (!regexBirthdate.test(infoBirthdate.value)){
-    infoBirthdate.closest(".formData").setAttribute("data-error","Veuillez rentrer une date de naissance valide : JJ/MM/AAAA" );
-  }else if(infoBirthdate.value > maxAge){
-    infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir plus de 13 ans pour participer à ce tournois"); 
-  }else{
-    infoBirthdate.closest(".formData").setAttribute("data-error","");
+  } else if (!regexBirthdate.test(infoBirthdate.value)) {
+    infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez rentrer une date de naissance valide : JJ/MM/AAAA");
+  } else if (infoBirthdate.value > maxAge) {
+    infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir plus de 13 ans pour participer à ce tournois");
+  } else {
+    infoBirthdate.closest(".formData").setAttribute("data-error", "");
     return true;
   }
   //listener event
-   infoBirthdate.addEventListener("keyup", function(event){
+  infoBirthdate.addEventListener("keyup", function (event) {
     event.preventDefault();
-  if(infoBirthdate.validity.valueMissing){
-    infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-  }else if (!regexBirthdate.test(infoBirthdate.value)){
-    infoBirthdate.closest(".formData").setAttribute("data-error","Veuillez rentrer une date de naissance valide : JJ/MM/AAAA" );
-    
-  }else{
-    infoBirthdate.closest(".formData").setAttribute("data-error","");
-    return true;
-  }
-})
+    if (infoBirthdate.validity.valueMissing) {
+      infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    } else if (!regexBirthdate.test(infoBirthdate.value)) {
+      infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez rentrer une date de naissance valide : JJ/MM/AAAA");
+    } else if (infoBirthdate.value > maxAge) {
+      infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir plus de 13 ans pour participer à ce tournois");
+    } else {
+      infoBirthdate.closest(".formData").setAttribute("data-error", "");
+      return true;
+    }
+  })
 
 }
 
 
 //fonction validation ville
-function validCheckCity(){
+function validCheckCity() {
+  //on recherche toutes les villes selectionnés
   let nbBoxChecked = 0;
-  for(let i=0; i<locationCity.length;i++){  
-   if(locationCity[i].checked == true){
-    nbBoxChecked++;
-    classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
-  }
-}
-  if(nbBoxChecked < 1){
-    classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
-  
-  }else{
-      classNameLocationCity.closest(".formData").setAttribute("data-error","");
-     
-      return true;
+  for (let i = 0; i < locationCity.length; i++) {
+    if (locationCity[i].checked == true) {
+      nbBoxChecked++;
+      classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
     }
-  
+  }
+  if (nbBoxChecked < 1) {
+    classNameLocationCity.closest(".formData").setAttribute("data-error", "Veuillez choisir une ville");
+
+  } else {
+    classNameLocationCity.closest(".formData").setAttribute("data-error", "");
+
+    return true;
+  }
+
 }
 
 
 //fonction validation condition d'utilisation
-function validTermsOfUse(){
-  if(this.checked == false){
+function validTermsOfUse() {
+  if (this.checked == false) {
     termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
-    
-  }else{
-    termsOfUse.closest(".formData").setAttribute("data-error","");
+
+  } else {
+    termsOfUse.closest(".formData").setAttribute("data-error", "");
     return true;
-  }  
-   //listener event
-   termsOfUse.addEventListener("change", function(event){
+  }
+  //listener event
+  termsOfUse.addEventListener("change", function (event) {
     event.preventDefault();
-      if(this.checked == false){
-        termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
-        
-      }else{
-        termsOfUse.closest(".formData").setAttribute("data-error","");
-        return true;
-      }  
+    if (this.checked == false) {
+      termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
+
+    } else {
+      termsOfUse.closest(".formData").setAttribute("data-error", "");
+      return true;
+    }
   })
 }
 
-const message = document.querySelector(".message-sendData");
+
 /*******************************************************************************************************************************************************/
 
-function validate(){
+function validate() {
 
   validFirstName();
   validLastName();
@@ -277,21 +272,19 @@ function validate(){
   infoMatchGameon();
   validCheckCity();
   validTermsOfUse();
-  
- 
- 
-  if((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)){
-    message.style.display="block";  
-    setTimeout(function(){
-      message.style.display="none";
+  //on verifie la validité de chaques input puis on affiche un message de validation d'envoie du formulaire , suivi de sa fermeture si c'est "true".  
+  if ((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)) {
+    message.style.display = "block";
+    setTimeout(function () {
+      message.style.display = "none";
       closeModal();
-      }, 5000);
-      }else{
-      return false;
-    }
+    }, 5000);
+  } else {
+    return false;
+  }
 }
 
-submitForm.addEventListener("click", validate, function(event){
+submitForm.addEventListener("click", validate, function (event) {
   event.preventDefault();
 });
 
