@@ -43,7 +43,7 @@ header{
 }
 .header-logo {
     /*suppression float: left;+ ajout*/
-    width: 40%;
+    /*width: 40%;*/
     display: flex;
 }
 
@@ -54,7 +54,7 @@ header{
 /*probleme de lecture des class, remplacement des .topnav par .main-navbar*/
 .main-navbar {
     /*suppression : float: right; + ajout*/
-    width: 60%;
+    /*width: 60%;*/
     display: flex;
     justify-content: flex-end;
 }
@@ -552,41 +552,92 @@ footer {
 }
 
 /*******************************************MEDIQUERIES**********************************/
-@media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+@media screen and (max-width:1023px){
+  .topnav{
+    margin: 30px auto;
   }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
+  .header-logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 30px;
+  
   }
-}
+ 
+  .main-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-navbar a{
+    font-size: 1rem;
+  }
+
+  .hero-section {
+    margin: auto;
+    margin-bottom: 10px;
+    flex-direction: column;
+    overflow: visible;
+    border:none;
+    width: 90%;
+    box-shadow: none;
+    height: auto;
+  }
+  .hero-content {
+    color: #000;
+    position:static;
+    width: 100%;
+    margin: auto;
+    padding:0;
+    background: none;
+    text-align: center;
+  }
+  .hero-headline{
+    width: 100%;
+    font-size: 4rem;
+  }
+  .hero-text {
+    width: 100%;
+    font-weight: normal;
+    margin-top: 30px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    padding:0;
+  }
+  .btn-signup{
+    display: none;
+  }
+  
+  .hero-img {
+    width: 100%;
+  }
+
+  .btn-visible{
+    display:block;
+    margin: 50px auto 10px;
+  }
+
+  main{
+    margin-bottom: 0;
+  }
+
+  footer {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+}  
+
+
+
 
 
 
  
-@media screen and (max-width: 800px) {
+/*@media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -624,16 +675,49 @@ footer {
     text-align: center;
   }
 }
-
-@media screen and (max-width: 1195px) {
+*/
+@media screen and (min-width: 1000px) {
   .main-navbar a{
     font-size: 1rem;
   }
+
 }
 
-@media screen and (max-width:1040px) {
-  .main-navbar a{
-    font-size: 0.8rem;
+@media screen and (min-width: 240px) and (max-width:600px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float:inline-end;
+    display: block;
+    text-align:left;
+  }
+  
+  .topnav{
+    width: 90%;
+    margin:30px auto;
+    justify-content: space-between;
+    flex-wrap: unset;
+  }
+  .header-logo {
+    width: auto;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  .main-navbar{
+    display: flex;
+    flex-direction: column;
+    width: auto;
   }
   
 }
