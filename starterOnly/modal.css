@@ -4,7 +4,7 @@
   --modal-duration: 0.8s;
 }
 * {
-  /*suppression de cette propriété box-sizing: border-box;*/
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -26,15 +26,11 @@ p {
   padding: 0.5vw;
 }
 
-/*SUPPRESSION DE img {
-  padding-right: 1rem;
-}*/
 header{
   width: 100%;
 }
 .topnav {
   overflow: hidden;
-  /*suppression margin: 3.5%; + ajout : */
   width: 90%;
   margin: 50px auto;
   display: flex;
@@ -42,19 +38,14 @@ header{
   flex-wrap: wrap;
 }
 .header-logo {
-    /*suppression float: left;+ ajout*/
-    /*width: 40%;*/
     display: flex;
 }
 
 .header-logo img{
-  width: 70%;
+  width: 50%;
 }
 
-/*probleme de lecture des class, remplacement des .topnav par .main-navbar*/
 .main-navbar {
-    /*suppression : float: right; + ajout*/
-    /*width: 60%;*/
     display: flex;
     justify-content: flex-end;
 }
@@ -79,7 +70,6 @@ header{
   
 }
 
-/*mise en place border bottom sur le lien actif*/
 .main-navbar a.active span{
   border-bottom: 1px #fff solid;
 }
@@ -95,30 +85,20 @@ header{
   display: none;
 }
 
-/****suppressin lien retour accueil**/
 .main-navbar .link-invisible{
   display: none;
 }
 
 main {
-  font-size: 1rem /*au lieu de 130%*/;
+  font-size: 1rem ;
   font-weight: bolder;
   color: black;
-  /* suppression 
-  padding-top: 0.5vw;
-  padding-left:2vw;
-  padding-right: 2vw;*/
-  /*suppression de   margin: 1px 20px 15px;*/
   border-radius: 2rem;
-  /*suppression text-align: justify;*/
-  /*ajout widht+margin*/
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
-
-
 }
-/*suppression d'un bouton, je m'inscris, en trop dans le html*/
+
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -231,8 +211,6 @@ input {
   border: 2px solid #e54858;
 }
 
-
-
 .list-city{
   display: flex;
   justify-content: space-around;
@@ -338,10 +316,9 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
-
-
-
-
+main .btn-hidden{
+  display: none;
+}
 
 .btn-submit,
 .btn-signup {
@@ -421,66 +398,46 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
 .hero-section {
- /*suppression valeur vh min-height: 93vh;*/
   border-radius: 10px;
-  /*UTILISATION DE FLEXBOX display: grid;
-  grid-template-columns: repeat(12, 1fr);*/
   display: flex;
-  /*on ajoute une largeur + margin auto*/
   width: 90%;
   margin:auto;
   overflow: hidden;
-  /*modification box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);*/
   box-shadow: -1px 11px 9px -2px rgba(169,169,169,1);
   margin-bottom: 10px;
-  /*defini une hauteur*/
-  height: 750px;
+  height: 1000px;
 }
+
 .hero-content {
-  /*modification paddding padding: 51px 67px;*/ padding:50px;
-  /*grid-column: span 4;*/
-  /*on ajoute une largeur pour cette partie*/
+padding:50px;
   width: 30%;
   background: #232323;
   color: #fff;
   position: relative;
-  /*suppression de text-align: left;*/
-  /*suppression de ces valeur, la largeur etant deja définie par le grid min-width: 424px;*/
 }
-/*.hero-content::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #232323;
-  position: absolute;
-  right: -80px;
-  top: 0;
-}*/
-/*.hero-content > * {
-  position: relative;
-  z-index: 1;
-}*/
+
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  /*suppression white-space: nowrap;*/
   width: 800px;
   margin-top: 20px;
 }
+
 .hero-text {
-  /* modification width: 146%;*/ width: 100%;
+ width: 100%;
   font-weight: normal;
   margin-top: 100px;
-  /*suppression de padding: 0;*/
-  /*ajout font-size*/
   font-size: 1.5em;
 }
+
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -490,18 +447,19 @@ input[data-error]::after {
   margin-top: 80px;
   font-size: 1.8em;
 }
+
 .hero-img {
-  /* on remplace : grid-column: span 8;*/
   width: 70%;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
-  /*ajout propriété object-fit*/
   object-fit: fill;
 }
+
 .copyrights {
   color: #fe142f;
   padding: 0;
@@ -509,13 +467,12 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
-  /*suppression : padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;*/
   width: 95%;
   margin: auto;
 }
@@ -553,7 +510,15 @@ footer {
 
 /*******************************************MEDIQUERIES**********************************/
 
+/*grand écran*/
+@media screen and (min-width:1900px){
+  body{
+    max-width: 1900px;
+  }
+}
 
+
+/*desktop*/
 @media screen and (max-width:1023px){
   .topnav{
     margin: 30px auto;
@@ -562,7 +527,6 @@ footer {
     width: 100%;
     justify-content: center;
     margin-bottom: 30px;
-  
   }
  
   .main-navbar {
@@ -585,6 +549,7 @@ footer {
     box-shadow: none;
     height: auto;
   }
+
   .hero-content {
     color: #000;
     position:static;
@@ -592,20 +557,24 @@ footer {
     margin: auto;
     padding:0;
     background: none;
-    text-align: center;
   }
+
   .hero-headline{
     width: 100%;
-    font-size: 4rem;
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
   }
+
   .hero-text {
     width: 100%;
     font-weight: normal;
     margin-top: 30px;
-    font-size: 1.5em;
+    font-size: 1.2rem;
     margin-bottom: 30px;
     padding:0;
   }
+
   .btn-signup{
     display: none;
   }
@@ -614,9 +583,14 @@ footer {
     width: 100%;
   }
 
-  .btn-visible{
-    display:block;
+  .hero-img img{
+    border-radius: 10px;
+  }
+  
+  main .btn-hidden{
+    display: block;
     margin: 50px auto 10px;
+    font-size: 1.2rem;
   }
 
   main{
@@ -631,51 +605,7 @@ footer {
   }
 }  
 
-
-
-
-
-
- 
-/*@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  .copyrights {
-    margin-top: 50px;
-    text-align: center;
-  }
-}
-*/
+/*tablette*/
 @media screen and (min-width: 1000px) {
   .main-navbar a{
     font-size: 1rem;
@@ -683,6 +613,8 @@ footer {
 
 }
 
+
+/*tablette + mobile*/
 @media screen and (min-width: 240px) and (max-width:600px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -690,14 +622,19 @@ footer {
     display: block;
   }
 
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
   .topnav.responsive a {
-    float:inline-end;
+    float:left;
     display: block;
     text-align:left;
   }
@@ -709,7 +646,6 @@ footer {
     flex-wrap: unset;
   }
   .header-logo {
-    width: auto;
     justify-content: flex-start;
     margin-bottom: 0;
   }
@@ -718,6 +654,6 @@ footer {
     display: flex;
     flex-direction: column;
     width: auto;
-  }
-  
+  } 
 }
+
