@@ -42,7 +42,7 @@ header{
 }
 
 .header-logo img{
-  width: 50%;
+  width: 100%;
 }
 
 .main-navbar {
@@ -524,10 +524,12 @@ footer {
     margin: 30px auto;
   }
   .header-logo {
-    width: 100%;
+    width: 60%;
+
     justify-content: center;
-    margin-bottom: 30px;
+    margin: 0 auto 30px;
   }
+ 
  
   .main-navbar {
     width: 100%;
