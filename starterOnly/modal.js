@@ -41,14 +41,15 @@ function launchModal() {
 
 /***********************************************************************fermeture du formulaire************************************************************************/
 
+//on définit une fonction pour faire fonctionner la croix de fermeture de la modale : closemodal 
+const closeModal = () => {
+  modalbg.style.display = "none";
+}
 
 //on cré un évènement sur le bouton de fermeture de la modale
 btnClose.addEventListener("click", closeModal);
 
-//on définit une fonction pour faire fonctionner la croix de fermeture de la modale : closemodal 
-function closeModal() {
-  modalbg.style.display = "none";
-}
+
 
 /***********************************************************************fonctions validation du formulaire ************************************************************/
 
@@ -60,7 +61,7 @@ let regexBirthdate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01]
 
 
 /*fonction validation prénom: on vérifie si le champ est vide, si le texte saisi est conforme au regex, si le nombre de caractère n'est pas inférieur à 2*/
-function validFirstName() {
+const validFirstName = () => {
   if (infoFirstName.validity.valueMissing) {
     infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
 
@@ -79,7 +80,7 @@ function validFirstName() {
 
 
 /*fonction validation nom : mêmes vérifications que le champ infoFirstName (fonction validFirstName)*/
-function validLastName() {
+const validLastName = () => {
   if (infoLastName.validity.valueMissing) {
     infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
 
@@ -98,7 +99,7 @@ function validLastName() {
 
 
 /*fonction validation email: on vérifie si le champ est vide, si le texte saisi est conforme au regex email*/
-function validEmail() {
+const validEmail = () => {
   if (infoEmail.validity.valueMissing) {
     infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
 
@@ -114,7 +115,7 @@ function validEmail() {
 
 
 /*fonction validation experience gameOn : on vérifie si le champ est vide, si la valeur entrée est inférieure à 1 ou supérieure à 99*/
-function infoMatchGameon() {
+const infoMatchGameon = () => {
   if (gameonMatch.validity.typeMismatch) {
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
 
@@ -130,7 +131,7 @@ function infoMatchGameon() {
 
 
 /*fonction validation date de naissance : on vérifie si le champ est vide, si la date de naissance saisie est conforme à la regex Birthdate, si la personne est en age de participer au tournois (min. 13 ans)*/
-function validBirthdate() {
+const validBirthdate = () => {
   const maxAge = "2008-31-12";
 
   if (infoBirthdate.validity.valueMissing) {
@@ -151,7 +152,7 @@ function validBirthdate() {
 
 
 /*fonction validation ville : on vérifie si au moins une ville est selectionnée*/
-function validCheckCity() {
+const validCheckCity = () => {
 
   //on utilise une boucle for pour récupérer la liste de toutes les villes qui ont reçu la valeur "checked"
   let nbBoxChecked = 0;
@@ -173,7 +174,10 @@ function validCheckCity() {
 
 
 /*fonction validation condition d'utilisation : on vérifie si la case : conditions d'utilisation est "checked"*/
-function validTermsOfUse() {
+const validTermsOfUse = () => {
+  
+
+
   if (!termsOfUse.checked) {
     termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
 
@@ -188,7 +192,7 @@ function validTermsOfUse() {
 
 /* on crée une fonction validation du formulaire*/
 
-function validate() {
+const validate = () => {
 
   //on appelle toutes les fonctions
   validFirstName();
