@@ -175,9 +175,6 @@ const validCheckCity = () => {
 
 /*fonction validation condition d'utilisation : on vérifie si la case : conditions d'utilisation est "checked"*/
 const validTermsOfUse = () => {
-  
-
-
   if (!termsOfUse.checked) {
     termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
 
