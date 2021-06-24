@@ -208,13 +208,17 @@ const validTermsOfUse = () => {
   }
 }
 
+const messageClosed = () => {
+  message.style.display = "none";
+}
+
 
 /*****************************************************************************Envoie du formulaire***************************************************************/
 
 /* on crée une fonction validation du formulaire*/
 
-const validate = () => {
-
+const validate = (event) => {
+  event.preventDefault();
   //on appelle toutes les fonctions
   validFirstName();
   validLastName();
@@ -227,19 +231,16 @@ const validate = () => {
   //on verifie la validité de chaques input puis on affiche un message de validation d'envoie du formulaire , suivi de sa fermeture si c'est "true".  
   if ((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)) {
     message.style.display = "block";
-    setTimeout(function () {
-      message.style.display = "none";
-      closeModal();
-    }, 4000);
-  } else {
+  }else {
     return false;
   }
 }
 
 
 
+
 /*on cré un évènement au click sur le bouton submit avec la fonction validate en callback, et l'action pardéfaut du submit n'est pas exécuté tant que les valeurs sont : false*/
-submitForm.addEventListener("click", validate, function (event) {
+submitForm.addEventListener("click", validate,  (event) => {
   event.preventDefault();
 });
 
