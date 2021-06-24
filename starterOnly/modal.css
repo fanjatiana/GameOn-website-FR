@@ -37,9 +37,9 @@ header{
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.header-logo {
+/*.header-logo {
     display: flex;
-}
+}*/
 
 .header-logo img{
   width: 100%;
@@ -525,12 +525,12 @@ footer {
 
 
 /*tablette*/
-@media screen and (max-width:1024px){
+@media screen and (max-width:1023px){
   .topnav{
     margin: 30px auto;
   }
   .header-logo {
-    width: 60%;
+    width: 65%;
 
     justify-content: center;
     margin: 0 auto 30px;

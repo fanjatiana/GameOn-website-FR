@@ -148,7 +148,6 @@ const infoMatchGameon = () => {
 /*fonction validation date de naissance : on vérifie si le champ est vide, si la date de naissance saisie est conforme à la regex Birthdate, si la personne est en age de participer au tournois (min. 13 ans)*/
 const validBirthdate = () => {
   const minAge = "2008-31-12";
-
   const maxAge="1920-31-12";
 
   if (infoBirthdate.validity.valueMissing) {
