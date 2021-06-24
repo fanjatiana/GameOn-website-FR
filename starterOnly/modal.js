@@ -64,15 +64,19 @@ let regexBirthdate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01]
 const validFirstName = () => {
   if (infoFirstName.validity.valueMissing) {
     infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
+    infoFirstName.style.borderColor = "#e54858";
 
   } else if (!regexNameAndLastName.test(infoFirstName.value)) {
-    infoFirstName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+    infoFirstName.closest(".formData").setAttribute("data-error", " Ecrivez en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+    infoFirstName.style.borderColor = "#e54858";
 
   } else if (infoFirstName.value.length < 2) {
     infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
+    infoFirstName.style.borderColor = "#e54858";
 
   } else {
     infoFirstName.closest(".formData").setAttribute("data-error", "");
+    infoFirstName.style.borderColor = "";
     return true;
   }
 }
@@ -83,15 +87,19 @@ const validFirstName = () => {
 const validLastName = () => {
   if (infoLastName.validity.valueMissing) {
     infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    infoLastName.style.borderColor = "#e54858";
 
   } else if (!regexNameAndLastName.test(infoLastName.value)) {
-    infoLastName.closest(".formData").setAttribute("data-error", " écriture en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+    infoLastName.closest(".formData").setAttribute("data-error", " Ecrivez en miniscule ou majuscule , pas de nombre, seuls caractères autorisés: . - ' et espaces");
+    infoLastName.style.borderColor = "#e54858";
 
   } else if (infoLastName.value.length < 2) {
     infoLastName.closest(".formData").setAttribute("data-error", "Veuillez entrer entre 2 et 30 caractères pour valider ce champ ");
+    infoLastName.style.borderColor = "#e54858";
 
   } else {
     infoLastName.closest(".formData").setAttribute("data-error", "");
+    infoLastName.style.borderColor = "";
     return true;
   }
 }
@@ -102,12 +110,15 @@ const validLastName = () => {
 const validEmail = () => {
   if (infoEmail.validity.valueMissing) {
     infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    infoEmail.style.borderColor = "#e54858";
 
   } else if (!regexEmail.test(infoEmail.value)) {
-    infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer un e-mail valide (par exemple: monemail@boitemail.com");
+    infoEmail.closest(".formData").setAttribute("data-error", "Veuillez rentrer une adresse email valide (par exemple: monemail@yahoo.com");
+    infoEmail.style.borderColor = "#e54858";
 
   } else {
     infoEmail.closest(".formData").setAttribute("data-error", "");
+    infoEmail.style.borderColor = "";
     return true;
   }
 }
@@ -116,14 +127,18 @@ const validEmail = () => {
 
 /*fonction validation experience gameOn : on vérifie si le champ est vide, si la valeur entrée est inférieure à 1 ou supérieure à 99*/
 const infoMatchGameon = () => {
-  if (gameonMatch.validity.typeMismatch) {
+  console.log(gameonMatch.value);
+  if (gameonMatch.validity.valueMissing) {
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    gameonMatch.style.borderColor = "#e54858";
 
-  } else if (gameonMatch.value > 99 || gameonMatch.value == 0) {
+  } else if (gameonMatch.value > 99 || gameonMatch.value <= 0) {
     gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
+    gameonMatch.style.borderColor = "#e54858";
 
   } else {
     gameonMatch.closest(".formData").setAttribute("data-error", "");
+    gameonMatch.style.borderColor = "";
     return true;
   }
 }
@@ -132,19 +147,29 @@ const infoMatchGameon = () => {
 
 /*fonction validation date de naissance : on vérifie si le champ est vide, si la date de naissance saisie est conforme à la regex Birthdate, si la personne est en age de participer au tournois (min. 13 ans)*/
 const validBirthdate = () => {
-  const maxAge = "2008-31-12";
+  const minAge = "2008-31-12";
+
+  const maxAge="1920-31-12";
 
   if (infoBirthdate.validity.valueMissing) {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    infoBirthdate.style.borderColor = "#e54858";
 
   } else if (!regexBirthdate.test(infoBirthdate.value)) {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez rentrer une date de naissance valide : JJ/MM/AAAA");
+    infoBirthdate.style.borderColor = "#e54858";
 
-  } else if (infoBirthdate.value > maxAge) {
+  } else if (infoBirthdate.value < maxAge){
+    infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir moins de 100 ans pour participer à ce tournois");
+    infoBirthdate.style.borderColor = "#e54858";
+
+  } else if (infoBirthdate.value > minAge) {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir plus de 13 ans pour participer à ce tournois");
+    infoBirthdate.style.borderColor = "#e54858";
 
   } else {
     infoBirthdate.closest(".formData").setAttribute("data-error", "");
+    infoBirthdate.style.borderColor = "";
     return true;
   }
 }

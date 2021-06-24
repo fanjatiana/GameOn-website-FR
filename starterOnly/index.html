@@ -37,8 +37,13 @@
 				</div>
 			</div>
 			<div class="bground">
+				<div class="message-sendData">
+					<p>Merci <br> votre formulaire a bien été envoyé</p>
+				</div>
 				<div class="content">
+					
 					<span class="close"></span>
+					
 					<div class="modal-body">
 						<form name="reserve" id="formGameon" action="/cible.php" method="POST" onsubmit=" return validate()">
 							<div class="formData">
@@ -55,7 +60,7 @@
 							</div>
 							<div class="formData">
 								<label for="birthdate">Date de naissance</label><br>
-								<input class="text-control birthdate" type="date" id="birthdate" name="birthdate" required/><br>
+								<input class="text-control birthdate" type="date" id="birthdate" min="1920-31-12" max="2008-31-12" name="birthdate" required/><br>
 							</div>
 							<div class="formData">
 								<label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
@@ -65,7 +70,7 @@
 								<p class="text-label">Quelles villes ?</p>
 								<div class="formData list-city">
 									<div>
-										<input class="checkbox-input city " type="checkbox" id="location1" name="location" value="New York" />
+										<input class="checkbox-input city " type="checkbox" id="location1" name="location" value="New York" checked />
 										<label class="checkbox-label" for="location1"><span class="checkbox-icon"></span>New York</label>
 									</div>
 									<div>
@@ -103,10 +108,7 @@
 									<label for="submit-form"></label>
 									<input class="btn-submit button" id="submit-form" type="button"  value="C'est parti"  />
 								</div>
-							</div>
-							<div class="message-sendData">
-								<p>Merci d'avoir compléter ce formulaire, un message de confirmation d'inscription vous sera envoyé prochainement dans votre boite email. A bientôt! </p>
-							</div>				
+							</div>			
 						</form>
 					</div>
 				</div>
