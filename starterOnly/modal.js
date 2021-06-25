@@ -19,8 +19,8 @@ const infoBirthdate = document.getElementById("birthdate");
 const form = document.getElementsByName("form");
 const submitForm = document.getElementById("submit-form");
 const minlength = document.getElementsByTagName("minlength");
-const gameonMatch = document.getElementById("quantity");
-const locationCity = document.getElementsByName("location");
+const infoGameonMatch = document.getElementById("quantity");
+const infoLocationCity = document.getElementsByName("location");
 const termsOfUse = document.getElementById("checkbox1");
 const maxlength = document.getElementsByTagName("maxlength");
 const cityChecked = document.getElementsByTagName("checked");
@@ -61,7 +61,7 @@ let regexBirthdate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01]
 
 
 /*fonction validation prénom: on vérifie si le champ est vide, si le texte saisi est conforme au regex, si le nombre de caractère n'est pas inférieur à 2*/
-const validFirstName = () => {
+const validationFirstName = () => {
   if (infoFirstName.validity.valueMissing) {
     infoFirstName.closest(".formData").setAttribute("data-error", "Veuillez remplir le formulaire");
     infoFirstName.style.borderColor = "#e54858";
@@ -84,7 +84,7 @@ const validFirstName = () => {
 
 
 /*fonction validation nom : mêmes vérifications que le champ infoFirstName (fonction validFirstName)*/
-const validLastName = () => {
+const validationLastName = () => {
   if (infoLastName.validity.valueMissing) {
     infoLastName.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
     infoLastName.style.borderColor = "#e54858";
@@ -107,7 +107,7 @@ const validLastName = () => {
 
 
 /*fonction validation email: on vérifie si le champ est vide, si le texte saisi est conforme au regex email*/
-const validEmail = () => {
+const validationEmail = () => {
   if (infoEmail.validity.valueMissing) {
     infoEmail.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
     infoEmail.style.borderColor = "#e54858";
@@ -125,30 +125,10 @@ const validEmail = () => {
 
 
 
-/*fonction validation experience gameOn : on vérifie si le champ est vide, si la valeur entrée est inférieure à 1 ou supérieure à 99*/
-const infoMatchGameon = () => {
-  console.log(gameonMatch.value);
-  if (gameonMatch.validity.valueMissing) {
-    gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
-    gameonMatch.style.borderColor = "#e54858";
-
-  } else if (gameonMatch.value > 99 || gameonMatch.value <= 0) {
-    gameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
-    gameonMatch.style.borderColor = "#e54858";
-
-  } else {
-    gameonMatch.closest(".formData").setAttribute("data-error", "");
-    gameonMatch.style.borderColor = "";
-    return true;
-  }
-}
-
-
-
 /*fonction validation date de naissance : on vérifie si le champ est vide, si la date de naissance saisie est conforme à la regex Birthdate, si la personne est en age de participer au tournois (min. 13 ans)*/
-const validBirthdate = () => {
+const validationBirthdate = () => {
   const minAge = "2008-31-12";
-  const maxAge="1920-31-12";
+  const maxAge = "1900-31-12";
 
   if (infoBirthdate.validity.valueMissing) {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
@@ -158,8 +138,8 @@ const validBirthdate = () => {
     infoBirthdate.closest(".formData").setAttribute("data-error", "Veuillez rentrer une date de naissance valide : JJ/MM/AAAA");
     infoBirthdate.style.borderColor = "#e54858";
 
-  } else if (infoBirthdate.value < maxAge){
-    infoBirthdate.closest(".formData").setAttribute("data-error", "Vous devez avoir moins de 100 ans pour participer à ce tournois");
+  } else if (infoBirthdate.value < maxAge) {
+    infoBirthdate.closest(".formData").setAttribute("data-error", "date de naissance non valide");
     infoBirthdate.style.borderColor = "#e54858";
 
   } else if (infoBirthdate.value > minAge) {
@@ -175,13 +155,32 @@ const validBirthdate = () => {
 
 
 
+/*fonction validation experience gameOn : on vérifie si le champ est vide, si la valeur entrée est inférieure à 1 ou supérieure à 99*/
+const validationInfoMatchGameon = () => {
+  if (infoGameonMatch.validity.valueMissing) {
+    infoGameonMatch.closest(".formData").setAttribute("data-error", "Veuillez remplir ce champ");
+    infoGameonMatch.style.borderColor = "#e54858";
+
+  } else if (infoGameonMatch.value > 99 || infoGameonMatch.value <= 0) {
+    infoGameonMatch.closest(".formData").setAttribute("data-error", "Veuillez indiquer un nombre entre 1 et 99");
+    infoGameonMatch.style.borderColor = "#e54858";
+
+  } else {
+    infoGameonMatch.closest(".formData").setAttribute("data-error", "");
+    infoGameonMatch.style.borderColor = "";
+    return true;
+  }
+}
+
+
+
 /*fonction validation ville : on vérifie si au moins une ville est selectionnée*/
-const validCheckCity = () => {
+const validationCheckCity = () => {
 
   //on utilise une boucle for pour récupérer la liste de toutes les villes qui ont reçu la valeur "checked"
   let nbBoxChecked = 0;
-  for (let i = 0; i < locationCity.length; i++) {
-    if (locationCity[i].checked == true) {
+  for (let i = 0; i < infoLocationCity.length; i++) {
+    if (infoLocationCity[i].checked == true) {
       nbBoxChecked++;
     }
   }
@@ -198,7 +197,7 @@ const validCheckCity = () => {
 
 
 /*fonction validation condition d'utilisation : on vérifie si la case : conditions d'utilisation est "checked"*/
-const validTermsOfUse = () => {
+const validationTermsOfUse = () => {
   if (!termsOfUse.checked) {
     termsOfUse.closest(".formData").setAttribute("data-error", "Veuillez accepter les conditions d'utilisation");
 
@@ -208,40 +207,49 @@ const validTermsOfUse = () => {
   }
 }
 
-const messageClosed = () => {
-  message.style.display = "none";
-}
+
 
 
 /*****************************************************************************Envoie du formulaire***************************************************************/
+
+
 
 /* on crée une fonction validation du formulaire*/
 
 const validate = (event) => {
   event.preventDefault();
   //on appelle toutes les fonctions
-  validFirstName();
-  validLastName();
-  validEmail();
-  validBirthdate();
-  infoMatchGameon();
-  validCheckCity();
-  validTermsOfUse();
+  validationFirstName();
+  validationLastName();
+  validationEmail();
+  validationBirthdate();
+  validationInfoMatchGameon();
+  validationCheckCity();
+  validationTermsOfUse();
 
   //on verifie la validité de chaques input puis on affiche un message de validation d'envoie du formulaire , suivi de sa fermeture si c'est "true".  
-  if ((validFirstName() == true) && (validLastName() == true) && (validEmail() == true) && (validBirthdate() == true) && (validBirthdate() == true) && (infoMatchGameon() == true) && (validCheckCity() == true) && (validTermsOfUse() == true)) {
+  if ((validationFirstName() == true) && (validationLastName() == true) && (validationEmail() == true) && (validationBirthdate() == true) && (validationInfoMatchGameon() == true) && (validationCheckCity() == true) && (validationTermsOfUse() == true)) {
+    closeModal();
     message.style.display = "block";
-  }else {
+    setTimeout(() =>{
+      message.style.display = "none";
+    },3000);
+  } else {
     return false;
   }
 }
 
 
-
-
-/*on cré un évènement au click sur le bouton submit avec la fonction validate en callback, et l'action pardéfaut du submit n'est pas exécuté tant que les valeurs sont : false*/
-submitForm.addEventListener("click", validate,  (event) => {
+/*on cré un évènement au click sur le bouton submit avec la fonction validate en callback pour l'envoie du formulaire, et l'action pardéfaut du submit n'est pas exécuté tant que les valeurs sont : false*/
+submitForm.addEventListener("click", validate, (event) => {
   event.preventDefault();
 });
+
+
+/*on cré une fonction pour fermer le message de confirmation d'envoie du formulaire et on l'appelle avec l'attribut onclick*/
+const messageClosed = () => {
+  message.style.display = "none";
+}
+
 
 
