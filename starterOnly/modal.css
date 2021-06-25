@@ -1,7 +1,7 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
-  --modal-duration: 0.8s;
+  --modal-duration: 1s;
 }
 * {
   box-sizing: border-box;
@@ -493,8 +493,8 @@ footer {
   top:0px;
   z-index: 1;
   margin:auto;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  animation-name: messageOpen;
+  animation-duration: 0.8s;
 }
 
 .message-sendData .close {
@@ -518,6 +518,18 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+@keyframes messageOpen{
+  from{
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to{
+    opacity: 1;
+    
+  }
+
 }
 
 /*******************************************MEDIQUERIES**********************************/

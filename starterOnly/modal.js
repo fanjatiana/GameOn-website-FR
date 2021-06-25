@@ -28,6 +28,8 @@ const classNameLocationCity = document.querySelector(".city");
 const input = document.getElementsByTagName("input");
 const message = document.querySelector(".message-sendData");
 
+
+
 //affichage du formulaire
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -41,13 +43,12 @@ function launchModal() {
 
 /***********************************************************************fermeture du formulaire************************************************************************/
 
-//on définit une fonction pour faire fonctionner la croix de fermeture de la modale : closemodal 
+//on définit une fonction pour faire fonctionner la croix de fermeture de la modale puis on fait un callback avec l'attribut onclick 
 const closeModal = () => {
   modalbg.style.display = "none";
 }
 
-//on cré un évènement sur le bouton de fermeture de la modale
-btnClose.addEventListener("click", closeModal);
+
 
 
 
@@ -212,13 +213,11 @@ const validationTermsOfUse = () => {
 
 /*****************************************************************************Envoie du formulaire***************************************************************/
 
-
-
 /* on crée une fonction validation du formulaire*/
 
 const validate = (event) => {
   event.preventDefault();
-  //on appelle toutes les fonctions
+  /*on appelle toutes les fonctions*/
   validationFirstName();
   validationLastName();
   validationEmail();
@@ -227,13 +226,10 @@ const validate = (event) => {
   validationCheckCity();
   validationTermsOfUse();
 
-  //on verifie la validité de chaques input puis on affiche un message de validation d'envoie du formulaire , suivi de sa fermeture si c'est "true".  
+  /*on verifie la validité de chaques input puis on ferme le modale si c'est "true" et enfin on  affiche un message de validation d'envoie du formulaire (fermeture avec la methode setTimeout)*/  
   if ((validationFirstName() == true) && (validationLastName() == true) && (validationEmail() == true) && (validationBirthdate() == true) && (validationInfoMatchGameon() == true) && (validationCheckCity() == true) && (validationTermsOfUse() == true)) {
     closeModal();
     message.style.display = "block";
-    setTimeout(() =>{
-      message.style.display = "none";
-    },3000);
   } else {
     return false;
   }
@@ -250,6 +246,5 @@ submitForm.addEventListener("click", validate, (event) => {
 const messageClosed = () => {
   message.style.display = "none";
 }
-
 
 
