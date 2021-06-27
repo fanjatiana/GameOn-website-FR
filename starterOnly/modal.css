@@ -629,8 +629,8 @@ footer {
 
 /*tablette + mobile*/
 @media screen and (min-width: 240px) and (max-width:600px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
+  .main-navbar a {display: none;}
+  .main-navbar a.icon {
     float: right;
     display: block;
   }
